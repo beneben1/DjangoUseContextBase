@@ -1,12 +1,14 @@
-
 import './App.css';
-import Products from './Products/Proudcts';
-
+import Login from './app/Login/Login';
+import LoginMsg from './app/Login/LoginMsg';
 
 function App() {
+  
+
   return (
     <div className="App">
-      <Products/>
+      <Login />
+      <LoginMsg />
     </div>
   );
 }

@@ -39,17 +39,23 @@ class CustomTokenObtainPairView(TokenObtainPairView):
         return response
 
 
+
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-
-        # Add custom claims
+        #Adding custom data to token
         token['username'] = user.username
-        # ...
-
+        token['email'] = user.email
+        token['staff'] = user.is_staff 
+        token['last_login'] = str(user.last_login)
+        token['super_user'] = user.is_superuser
+        token['first_name'] = user.first_name
+        token['last_name'] = user.last_name
+        token['email'] = user.email
+        token['date_joined'] = str(user.date_joined)
         return token
-
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
